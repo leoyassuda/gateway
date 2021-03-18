@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    gateway:
+      metrics:
+        enabled: true
+    discovery:
+      locator:
+        enabled: true
+    lower-case-service-id: true
+  application:
+    name: gateway
+  eureka:
+    instance:
+      prefer-ip-address: true
