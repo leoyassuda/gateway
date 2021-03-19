@@ -17,6 +17,8 @@ buildNumber.properties
 
 .idea
 
+*.iml
+
 # CMake
 cmake-build-*/
 

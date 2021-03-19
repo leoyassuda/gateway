@@ -20,16 +20,20 @@ public class GatewayApplication {
                 .route(routeSpec ->
                         routeSpec
                                 .path("/hello")
-                                .filters(f -> f.addRequestHeader("Hello", "World"))
-                                .uri("http://httpbin.org")
+                                .filters(gatewayFilterSpec ->
+                                        gatewayFilterSpec.setPath("/guides")
+                                )
+                                .uri("https://spring.io")
                 )
-//                .route("twitter", routeSpec ->
-//                        routeSpec.path("/twitter/**")
-//                                .filters(gatewayFilterSpec -> gatewayFilterSpec.rewritePath(
-//                                        "/twitter/(?<handle>.*)",
-//                                        "/${handle}"))
-//                                .uri("http://twitter.com/@")
-//                )
+                .route("twitter", routeSpec ->
+                        routeSpec.path("/twitter/**")
+                        .filters(gatewayFilterSpec ->
+                                gatewayFilterSpec.rewritePath(
+                                        "/twitter/(?<handle>.*)",
+                                        "/${handle}")
+                        )
+                        .uri("http://twitter.com/@")
+                )
                 .build();
     }
 }
