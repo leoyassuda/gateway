@@ -5,9 +5,13 @@ eureka:
     service-url:
       default-zone: http://localhost:8761/eureka
 spring:
+  config:
+    import: "configserver:"
   application:
     name: gateway-discovery
-  cloud:
+#  cloud:
+#    config:
+#      uri: http://localhost:8888
     gateway:
       metrics:
         enable: true
